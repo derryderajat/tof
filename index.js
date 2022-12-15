@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 mongoose.set('strictQuery', true);
 var corsOptions = {
-  origin: 'https://tofservice.vercel.app/',
+  origin: 'https://tofdb.vercel.app/',
   optionsSuccessStatus: 200,
 };
 
