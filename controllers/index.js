@@ -54,9 +54,19 @@ exports.create = (req, res) => {
 exports.findAllPreview = (req, res) => {
   Simulacra.find({})
     .select('_id name previewIMG')
-
+    .lean()
+    .populate('weapon', 'resonance element')
     .then((data) => {
-      res.send(data);
+      let result = data.map((e) => ({
+        ...e,
+        resonance: e.weapon.resonance,
+        element: e.weapon.element,
+      }));
+      result.forEach(function (v) {
+        delete v.weapon;
+      });
+
+      res.send(result);
     })
     .catch((err) => {
       res.status(500).send({
