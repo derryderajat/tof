@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 mongoose.set('strictQuery', true);
 var corsOptions = {
-  origin: 'https://derryd.herokuapp.com/',
+  origin: 'https://tof.herokuapp.com/',
 };
 
 app.use(cors(corsOptions));
