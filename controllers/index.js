@@ -54,11 +54,8 @@ exports.create = (req, res) => {
 exports.findAllPreview = (req, res) => {
   Simulacra.find({})
     .select('_id name previewIMG')
-    // .populate('owner')
-    // .populate({ path: 'simulacras', options: { strictPopulate: false } })
-    .then((data) => {
-      // result.concat(data);
 
+    .then((data) => {
       res.send(data);
     })
     .catch((err) => {
