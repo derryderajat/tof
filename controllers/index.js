@@ -40,7 +40,6 @@ exports.create = (req, res) => {
   weapon
     .save(weapon)
     .then((data) => {
-      res.setHeader('Content-Type', 'application/json');
       res.send(data);
     })
     .catch((err) => {
@@ -59,11 +58,10 @@ exports.findAllPreview = (req, res) => {
     // .populate({ path: 'simulacras', options: { strictPopulate: false } })
     .then((data) => {
       // result.concat(data);
-      res.setHeader('Content-Type', 'application/json');
+
       res.send(data);
     })
     .catch((err) => {
-      res.setHeader('Content-Type', 'application/json');
       res.status(500).send({
         message:
           err.message || 'Some error occurred while retrieving simulacra.',
@@ -78,7 +76,7 @@ exports.findOne = (req, res) => {
     .populate('weapon')
     .then((data) => {
       // result.concat(data);
-      res.setHeader('Content-Type', 'application/json');
+
       res.send(data);
     })
     .catch((err) => {
@@ -135,7 +133,7 @@ exports.update = (req, res) => {
               console.log(err);
             } else {
               // console.log('Original Doc : ', docs);
-              res.setHeader('Content-Type', 'application/json');
+
               res.status(201).send({ status: 'success update' });
             }
           }
@@ -159,7 +157,7 @@ exports.delete = (req, res) => {
           console.log(err);
         } else {
           console.log('Deleted Weapon : ', docs);
-          res.setHeader('Content-Type', 'application/json');
+
           res.status(204).send({ status: 'resource deleted successfully' });
         }
       });

@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const app = express();
 mongoose.set('strictQuery', true);
 var corsOptions = {
-  origin: 'https://tofservice.vercel.app/',
+  origin: 'http://localhost:8080',
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
@@ -34,8 +35,9 @@ db.mongoose
     console.log('Cannot connect to the database!', err);
     process.exit();
   });
-
-require('./routes')(app);
+// const simulacra = require('./api/simulacra');
+require('./api/simulacra')(app);
+// app.use('api/simulacra', simulacra);
 // set port, listen for requests
 
 const PORT = process.env.PORT || 8080;
